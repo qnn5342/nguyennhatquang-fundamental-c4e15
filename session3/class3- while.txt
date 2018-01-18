@@ -1,0 +1,3 @@
+while True: => run all the time
+WHile false => stop
+break target all loop
