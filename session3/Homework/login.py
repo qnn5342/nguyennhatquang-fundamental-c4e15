@@ -1,20 +1,25 @@
 print ("Welcome to Log-in")
 
-# Insert username and password
-
 n = 3
 p = 3
-while n != 0 and p !=0:
+while n != 0:
     username = input("Please input username: ")
-    if username == "c4e":
-        pass_word = input("please input password: ")
-        if pass_word == "yay":
-            #print("You Got me!")
-            break
-        else:
-            print ("Wrong password")
-            p-=1
-            continue #### still go back to username
-    else:
-        print("Wrong username")
+    if username != "c4e":
+        print("Wrong username!")
         n-=1
+    else:
+        break
+if n == 0:
+    print ("You enter user wrong 3 times. Go away!!")
+else:
+    while p!=0:
+        pass_word = input("Please input password: ")
+        if pass_word != "yay":
+            print("Wrong password!")
+            p-=1
+        else:
+            print ("Yay! You can do anything to me")
+            break
+    else:
+        if p ==0:
+            print ("You enter wrong pass 3 times. Go away!")
