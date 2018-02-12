@@ -1,5 +1,5 @@
 from random import *
-
+from inside import is_inside
 shapes = [
     {
         'text': 'blue',
@@ -36,7 +36,7 @@ def generate_quiz():
     q = randint(0,3)
     text = text_list[k]
     colour = colour_list[q]
-    types = 1
+    types = 0
     return [text, colour, types]
 #
 # text = generate_quiz()[0]
@@ -46,18 +46,20 @@ def generate_quiz():
 #         rect_list.append(dictionary['rect'])
 # print (rect_list)
 def mouse_press(x, y, text, color, quiz_type):
-    rect_list = []
-    text = generate_quiz()[0]
-    color = generate_quiz()[1]
-    quiz_type = generate_quiz()[2]
+    a = [x,y]
+    rect_list_text = []
+    rect_list_color = []
+    print(x, y, text, color, quiz_type)
     for dictionary in shapes:
-        if quiz_type == 0:
-            if dictionary['text'] == text:
-                rect_list.append(dictionary['rect'])
-        else:
-            if dictionary['color'] == color:
-                rect_list.append(dictionary['rect'])
-    if x > int(rect_list[0][0]) and y > int(rect_list[0][1]):
+        if dictionary['text'] == text:
+            rect_list_text.append(dictionary['rect'])     #get the cpordinates of rectangle with color same as of quiz shown
+        if dictionary['color'] == color:
+            rect_list_color.append(dictionary['rect'])
+    check_result0 = is_inside(a, rect_list_text[0])
+    check_result1 = is_inside(a, rect_list_color[0])
+    if quiz_type ==0 and check_result0 == True:
+        return True
+    elif quiz_type ==1  and check_result1 == True:
         return True
     else:
         return False
